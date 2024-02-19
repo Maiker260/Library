@@ -1,0 +1,16 @@
+
+
+
+
+/* Main Footer TO_REMOVE_LATER */
+.main_footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    font-size: 1rem;
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid #ededed;
+}

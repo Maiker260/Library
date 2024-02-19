@@ -5,9 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <header>
+        <nav class="first_navbar">
+            <h1>MyCurrentList</h1>
+            <ul>
+                <h3>List Icon</h3>
+                <h3>Profile Name</h3>
+                <h3>Profile Photo</h3>
+            </ul>
+        </nav>
+        <nav class="second_navbar">
+            <ul>
+                <h3>Books</h3>
+                <h3>Series (In Progress)</h3>
+                <h3>Movies (In Progress)</h3>
+            </ul>
+            <div>
+                <select name="search_selection" id="search_selection">
+                    <option value="All">All</option>
+                    <option value="Books">Books</option>
+                    <option value="Series">Series</option>
+                    <option value="Movies">Movies</option>
+                </select>
+                <input type="search" name="search_bar" id="search_bar">
+                <button type="submit">Search</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <button>ADD BOOK</button>
+            <header>
+                <h2>Reading</h2>
+            </header>
+            <article>
+                <figure>
+                    <img src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
+                </figure>
+                <div>
+                    <div>
+                        <h3>Book Title 10</h3>
+                        <h4>Author: Author's Name</h4>
+                        <h4>Pages</h4>
+                    </div>
+                    <div>
+                        <h4>Status:</h4>
+                        <select name="book_status" id="book_status">
+                            <option value="Reading">Reading</option>
+                            <option value="To_Read">Plan to Read</option>
+                            <option value="Read">Read</option>
+                            <input type="submit" value="Apply">
+                        </select>
+                    </div>
+                    <input type="submit" value="Remove">
+                </div>
+            </article>
+        </section>
+        <section>
+            <header>
+                <h2>Plan To Read</h2>
+            </header>
+            <article>
+                <figure>
+                    <img src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
+                </figure>
+                <div>
+                    <div>
+                        <h3>Book Title 20</h3>
+                        <h4>Author: Author's Name</h4>
+                        <h4>Pages</h4>
+                    </div>
+                    <div>
+                        <h4>Status:</h4>
+                        <select name="book_status" id="book_status">
+                            <option value="Reading">Reading</option>
+                            <option value="To_Read">Plan to Read</option>
+                            <option value="Read">Read</option>
+                            <input type="submit" value="Apply">
+                        </select>
+                    </div>
+                    <input type="submit" value="Remove">
+                </div>
+            </article>
+        </section>
+        <section>
+            <header>
+                <h2>Read</h2>
+            </header>
+            <article>
+                <figure>
+                    <img src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
+                </figure>
+                <div>
+                    <div>
+                        <h3>Book Title 30</h3>
+                        <h4>Author: Author's Name</h4>
+                        <h4>Pages</h4>
+                    </div>
+                    <div>
+                        <h4>Status:</h4>
+                        <select name="book_status" id="book_status">
+                            <option value="Reading">Reading</option>
+                            <option value="To_Read">Plan to Read</option>
+                            <option value="Read">Read</option>
+                            <input type="submit" value="Apply">
+                        </select>
+                    </div>
+                    <input type="submit" value="Remove">
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="main_footer">
+        <h2>WEBSITE UNDER CONSTRUCTION</h2>
+    </footer>
 </body>
 </html>
