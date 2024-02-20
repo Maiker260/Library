@@ -8,144 +8,146 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header class="navbar">
-        <nav class="first_navbar">
-            <h1 class="logo">MyCurrentList</h1>
-            <ul class="navbar_user_section">
-                <li class="list user_list">List Icon</li>
-                <li class="list user_list">Profile Name</li>
-                <li class="list user_list">Profile Photo</li>
-            </ul>
-        </nav>
-        <nav class="second_navbar">
-            <ul class="navbar_choose_content_section">
-                <li class="list content_list">Books</li>
-                <li class="list content_list">Series (In Progress)</li>
-                <li class="list content_list">Movies (In Progress)</li>
-            </ul>
-            <div class="navbar_search_section">
-                <select name="search_selection" class="navbar_search_options" id="search_selection">
-                    <option value="All">All</option>
-                    <option value="Books">Books</option>
-                    <option value="Series">Series</option>
-                    <option value="Movies">Movies</option>
-                </select>
-                <input type="search" name="search_bar" class="navbar_search_bar" id="search_bar">
-                <button type="submit" class="navbar_search_button">Search</button>
+    <div class="website">
+        <header class="header_navbar">
+            <nav class="navbar first_navbar flex">
+                <h1 class="logo">MyCurrentList</h1>
+                <ul class="navbar_user_section flex">
+                    <li class="list user_list">List Icon</li>
+                    <li class="list user_list">Profile Name</li>
+                    <li class="list user_list">Profile Photo</li>
+                </ul>
+            </nav>
+            <nav class="navbar second_navbar flex">
+                <ul class="navbar_choose_content_section flex">
+                    <li class="list content_list">Books</li>
+                    <li class="list content_list">Series (In Progress)</li>
+                    <li class="list content_list">Movies (In Progress)</li>
+                </ul>
+                <div class="navbar_search_section">
+                    <select name="search_selection" class="navbar_search_options" id="search_selection">
+                        <option value="All">All</option>
+                        <option value="Books">Books</option>
+                        <option value="Series">Series</option>
+                        <option value="Movies">Movies</option>
+                    </select>
+                    <input type="search" name="search_bar" class="navbar_search_bar" id="search_bar">
+                    <button type="submit" class="navbar_search_button">Search</button>
+                </div>
+            </nav>
+        </header>
+        <main class="main_content">
+            <div>
+                <dialog class="dialog_book_creation">
+                    <form class="dialog_form_book_creation">
+                        <label for="book_title_input" class="form_book_info">
+                            Book Title:  
+                            <input type="text" placeholder="Book's Title" id="book_title_input">
+                        </label>
+                        <label for="book_author_input" class="form_book_info">
+                            Book Author's Name:  
+                            <input type="text" placeholder="Book's Author" id="book_author_input" required>
+                        </label>
+                        <label for="book_pages_input" class="form_book_info">
+                            Pages:  
+                            <input type="number" value="10" min="0" max="20000" id="book_pages_input">
+                        </label>
+                        <label for="book_status_input" class="form_book_info">
+                            Status:  
+                            <select name="book_status_input" id="book_status_input" required>
+                                <option value="reading">Reading</option>
+                                <option value="plan_to_read">Plan to Read</option>
+                                <option value="read">Read</option>
+                            </select>
+                        </label>
+                        <button class="save_book_button">Save</button>
+                    </form>
+                </dialog>
+                <button class="add_book_button">ADD BOOK</button>
             </div>
-        </nav>
-    </header>
-    <main class="main_content">
-        <div>
-            <dialog class="dialog_book_creation">
-                <form class="dialog_form_book_creation">
-                    <label for="book_title_input" class="form_book_info">
-                        Book Title:  
-                        <input type="text" placeholder="Book's Title" id="book_title_input">
-                    </label>
-                    <label for="book_author_input" class="form_book_info">
-                        Book Author's Name:  
-                        <input type="text" placeholder="Book's Author" id="book_author_input" required>
-                    </label>
-                    <label for="book_pages_input" class="form_book_info">
-                        Pages:  
-                        <input type="number" value="10" min="0" max="20000" id="book_pages_input">
-                    </label>
-                    <label for="book_status_input" class="form_book_info">
-                        Status:  
-                        <select name="book_status_input" id="book_status_input" required>
-                            <option value="reading">Reading</option>
-                            <option value="plan_to_read">Plan to Read</option>
-                            <option value="read">Read</option>
-                        </select>
-                    </label>
-                    <button class="save_book_button">Save</button>
-                </form>
-            </dialog>
-            <button class="add_book_button">ADD BOOK</button>
-        </div>
-        <section class="reading_section">
-            <header class="section_header">
-                <h2 class="section_title">Reading</h2>
-            </header>
-            <article class="book_card">
-                <figure class="picture_container">
-                    <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                </figure>
-                <div class="book_details">
-                    <div class="book_info">
-                        <h3 class="book_title">Book Title 10</h3>
-                        <h4 class="book_description book_author">Author: Author's Name</h4>
-                        <h4 class="book_description book_pages">Pages</h4>
+            <section class="reading_section">
+                <header class="section_header">
+                    <h2 class="section_title">Reading</h2>
+                </header>
+                <article class="book_card">
+                    <figure class="picture_container">
+                        <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
+                    </figure>
+                    <div class="book_details">
+                        <div class="book_info">
+                            <h3 class="book_title">Book Title 10</h3>
+                            <h4 class="book_description book_author">Author: Author's Name</h4>
+                            <h4 class="book_description book_pages">Pages</h4>
+                        </div>
+                        <div class="book_status">
+                            <h4 class="book_description book_status">Status:</h4>
+                            <select name="book_status_option" class="book_status_option" id="book_status_option">
+                                <option value="Reading">Reading</option>
+                                <option value="To_Read">Plan to Read</option>
+                                <option value="Read">Read</option>
+                                <input type="submit" value="Apply">
+                            </select>
+                        </div>
+                        <input type="submit" class="remove_book_button" value="Remove">
                     </div>
-                    <div class="book_status">
-                        <h4 class="book_description book_status">Status:</h4>
-                        <select name="book_status_option" class="book_status_option" id="book_status_option">
-                            <option value="Reading">Reading</option>
-                            <option value="To_Read">Plan to Read</option>
-                            <option value="Read">Read</option>
-                            <input type="submit" value="Apply">
-                        </select>
+                </article>
+            </section>
+            <section class="plan_to_read_section">
+                <header class="section_header">
+                    <h2 class="section_title">Plan To Read</h2>
+                </header>
+                <article class="book_card">
+                    <figure class="picture_container">
+                        <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
+                    </figure>
+                    <div class="book_details">
+                        <div class="book_info">
+                            <h3 class="book_title">Book Title 20</h3>
+                            <h4 class="book_description book_author">Author: Author's Name</h4>
+                            <h4 class="book_description book_pages">Pages</h4>
+                        </div>
+                        <div class="book_status">
+                            <h4 class="book_description book_status">Status:</h4>
+                            <select name="book_status_option" class="book_status_option" id="book_status_option">
+                                <option value="Reading">Reading</option>
+                                <option value="To_Read">Plan to Read</option>
+                                <option value="Read">Read</option>
+                                <input type="submit" value="Apply">
+                            </select>
+                        </div>
+                        <input type="submit" class="remove_book_button" value="Remove">
                     </div>
-                    <input type="submit" class="remove_book_button" value="Remove">
-                </div>
-            </article>
-        </section>
-        <section class="plan_to_read_section">
-            <header class="section_header">
-                <h2 class="section_title">Plan To Read</h2>
-            </header>
-            <article class="book_card">
-                <figure class="picture_container">
-                    <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                </figure>
-                <div class="book_details">
-                    <div class="book_info">
-                        <h3 class="book_title">Book Title 20</h3>
-                        <h4 class="book_description book_author">Author: Author's Name</h4>
-                        <h4 class="book_description book_pages">Pages</h4>
+                </article>
+            </section>
+            <section class="read_section">
+                <header class="section_header">
+                    <h2 class="section_title">Read</h2>
+                </header>
+                <article class="book_card">
+                    <figure class="picture_container">
+                        <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
+                    </figure>
+                    <div class="book_details">
+                        <div class="book_info">
+                            <h3 class="book_title">Book Title 30</h3>
+                            <h4 class="book_description book_author">Author: Author's Name</h4>
+                            <h4 class="book_description book_pages">Pages</h4>
+                        </div>
+                        <div class="book_status">
+                            <h4 class="book_description book_status">Status:</h4>
+                            <select name="book_status_option" class="book_status_option" id="book_status_option">
+                                <option value="Reading">Reading</option>
+                                <option value="To_Read">Plan to Read</option>
+                                <option value="Read">Read</option>
+                                <input type="submit" value="Apply">
+                            </select>
+                        </div>
+                        <input type="submit" class="remove_book_button" value="Remove">
                     </div>
-                    <div class="book_status">
-                        <h4 class="book_description book_status">Status:</h4>
-                        <select name="book_status_option" class="book_status_option" id="book_status_option">
-                            <option value="Reading">Reading</option>
-                            <option value="To_Read">Plan to Read</option>
-                            <option value="Read">Read</option>
-                            <input type="submit" value="Apply">
-                        </select>
-                    </div>
-                    <input type="submit" class="remove_book_button" value="Remove">
-                </div>
-            </article>
-        </section>
-        <section class="read_section">
-            <header class="section_header">
-                <h2 class="section_title">Read</h2>
-            </header>
-            <article class="book_card">
-                <figure class="picture_container">
-                    <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                </figure>
-                <div class="book_details">
-                    <div class="book_info">
-                        <h3 class="book_title">Book Title 30</h3>
-                        <h4 class="book_description book_author">Author: Author's Name</h4>
-                        <h4 class="book_description book_pages">Pages</h4>
-                    </div>
-                    <div class="book_status">
-                        <h4 class="book_description book_status">Status:</h4>
-                        <select name="book_status_option" class="book_status_option" id="book_status_option">
-                            <option value="Reading">Reading</option>
-                            <option value="To_Read">Plan to Read</option>
-                            <option value="Read">Read</option>
-                            <input type="submit" value="Apply">
-                        </select>
-                    </div>
-                    <input type="submit" class="remove_book_button" value="Remove">
-                </div>
-            </article>
-        </section>
-    </main>
+                </article>
+            </section>
+        </main>
+    </div>
     <footer class="main_footer">
         <h2>WEBSITE UNDER CONSTRUCTION</h2>
     </footer>
