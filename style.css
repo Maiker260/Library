@@ -5,6 +5,8 @@
 /* Global Styles */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .flex {
@@ -16,7 +18,7 @@
 }
 
 .list {
-    list-style: none;
+    list-style-type: none;
 }
 
 body {
@@ -27,17 +29,11 @@ body {
     font-style: normal;
 }
 
-.website {
-    padding: 1em 15em;
+.container {
+    padding: 0 11em 1em;
 }
 
 /* Header/Navbar */
-
-.logo {
-    font-family: "Anta", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
 
 .navbar {
     justify-content: space-between;
@@ -47,16 +43,86 @@ body {
 .first_navbar {
     background-color: #393838;
     color: white;
+    padding: 0.5em 12em 0.5em 11.6em;
+
+
+    .logo {
+        font-family: "Anta", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
 }
 
 .second_navbar{
     background-color: #324b92;
+    padding: 0 1em 0 0;
+
+
+    .content_list {
+        padding: 0.7em;
+    }
+
+    .content_list:hover {
+        background-color: #333333;
+    }
+
+    .navbar_choose_content_section {
+    list-style-type: none;
+    }
+
 }
 
 
 
+.list {
+    gap: 1em;
+}
+
+.search_background {
+    background-color: #393838;
+    color: white;
+    border: none;
+}
+
+.navbar_search_button {
+    padding: 0.2em;
+}
+
 /* Main Content */
 
+.button {
+    justify-content: end;
+
+
+    .add_book_button {
+        padding: 0.7em;
+        border-radius: 0.5em;
+
+    }
+
+}
+
+.main_content {
+    padding: 1em;
+}
+
+.section {
+    padding-bottom: 2em;
+    border-bottom: 1px solid #393838;
+}
+
+.plan_to_read_section, .read_section {
+    margin-top: 2em;
+}
+
+.section_header {
+    margin-bottom: 1em;
+}
+
+.book_card {
+    border: 1px solid white;
+}
 
 /* Main Footer TO_REMOVE_LATER */
 .main_footer {
