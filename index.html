@@ -8,31 +8,36 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <nav class="navbar first_navbar flex">
-        <h1 class="logo">MyCurrentList</h1>
-        <ul class="list navbar_user_section flex">
-            <li class="list_item user_list">List Icon</li>
-            <li class="list_item user_list">Profile Name</li>
-            <li class="list_item user_list">Profile Photo</li>
-        </ul>
-    </nav>
+    <nav class="hidden_bar"></nav>
     <div class="container">
         <header class="header_navbar">
+            <nav class="navbar first_navbar flex">
+                <h1 class="logo">MyCurrentList</h1>
+                <ul class="list navbar_user_section flex">
+                    <li class="list_item user_list">List Icon</li>
+                    <li class="list_item user_list">Profile Name</li>
+                    <li class="list_item user_list">Profile Photo</li>
+                </ul>
+            </nav>
             <nav class="navbar second_navbar flex">
                 <ul class="navbar_choose_content_section flex">
                     <li class="list_item content_list">Books</li>
                     <li class="list_item content_list">Series (In Progress)</li>
                     <li class="list_item content_list">Movies (In Progress)</li>
                 </ul>
-                <div class="navbar_search_section">
-                    <select name="search_selection" class="navbar_search_options search_background" id="search_selection">
+                <div class="navbar_search_section flex">
+                    <select name="search_selection" class="navbar_search_options search_background navbar_search_parameters" id="search_selection">
                         <option value="All">All</option>
                         <option value="Books">Books</option>
                         <option value="Series">Series</option>
                         <option value="Movies">Movies</option>
                     </select>
-                    <input type="search" name="search_bar" class="navbar_search_bar search_background" id="search_bar">
-                    <button type="submit" class="navbar_search_button search_background">Search</button>
+                    <div class="full_search_bar flex">
+                        <input type="search" name="search_bar" class="navbar_search_bar search_background navbar_search_parameters" id="search_bar">
+                        <button type="submit" class="button navbar_search_button search_background flex">
+                            <svg class="search_bar_icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        </button>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -54,18 +59,18 @@
                         </label>
                         <label for="book_status_input" class="form_book_info">
                             Status:  
-                            <select name="book_status_input" id="book_status_input" required>
+                            <select name="book_status_input" id="book_status_input" class="book_status_input" required>
                                 <option value="reading">Reading</option>
                                 <option value="plan_to_read">Plan to Read</option>
                                 <option value="read">Read</option>
                             </select>
                         </label>
-                        <button class="save_book_button">Save</button>
+                        <button class="button save_book_button">Save</button>
                     </form>
                 </dialog>
             </div>
-            <div class="button flex">
-                <button class="add_book_button">ADD BOOK</button>
+            <div class="add_button_container flex">
+                <button class="button add_book_button">ADD BOOK</button>
             </div>
             <section class="section reading_section">
                 <header class="section_header">
@@ -73,47 +78,55 @@
                 </header>
                 <article class="book_card flex">
                     <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                    <div class="book_details">
-                        <div class="book_info">
-                            <h3 class="book_title">Book Title 10</h3>
-                            <h4 class="book_description book_author">Author: Author's Name</h4>
-                            <h4 class="book_description book_pages">Pages</h4>
+                    <div class="book_details flex">
+                        <div class="book_first_section flex">
+                            <div class="book_info">
+                                <h3 class="book_title">Book Title 10</h3>
+                                <h4 class="book_description book_author">Author: Author's Name</h4>
+                                <h4 class="book_description book_pages">Pages</h4>
+                            </div>
+                            <input type="submit" class="button remove_book_button" value="Remove">
                         </div>
-                        <div class="book_status">
-                            <h4 class="book_description book_status">Status:</h4>
-                            <select name="book_status_option" class="book_status_option" id="book_status_option">
-                                <option value="Reading">Reading</option>
-                                <option value="To_Read">Plan to Read</option>
-                                <option value="Read">Read</option>
-                            </select>
-                            <input type="submit" value="Apply">
+                        <div class="book_status flex">
+                            <h4 class="book_description book_status status_title">Status:</h4>
+                            <div class="book_status_change flex">
+                                <select name="book_status_option" class="book_status_selector" id="book_status_option">
+                                    <option value="Reading">Reading</option>
+                                    <option value="To_Read">Plan to Read</option>
+                                    <option value="Read">Read</option>
+                                </select>
+                                <input type="submit" value="Update" class="button update_button">
+                            </div>
                         </div>
-                        <input type="submit" class="remove_book_button" value="Remove">
                     </div>
                 </article>
             </section>
             <section class="section plan_to_read_section">
                 <header class="section_header">
-                    <h2 class="section_title">Plan To Read</h2>
+                    <h2 class="section_title">Plan to Read</h2>
                 </header>
                 <article class="book_card flex">
                     <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                    <div class="book_details">
-                        <div class="book_info">
-                            <h3 class="book_title">Book Title 20</h3>
-                            <h4 class="book_description book_author">Author: Author's Name</h4>
-                            <h4 class="book_description book_pages">Pages</h4>
+                    <div class="book_details flex">
+                        <div class="book_first_section flex">
+                            <div class="book_info">
+                                <h3 class="book_title">Book Title 20</h3>
+                                <h4 class="book_description book_author">Author: Author's Name</h4>
+                                <h4 class="book_description book_pages">Pages</h4>
+                            </div>
+                            <input type="submit" class="button remove_book_button" value="Remove">
                         </div>
-                        <div class="book_status">
-                            <h4 class="book_description book_status">Status:</h4>
-                            <select name="book_status_option" class="book_status_option" id="book_status_option">
-                                <option value="Reading">Reading</option>
-                                <option value="To_Read">Plan to Read</option>
-                                <option value="Read">Read</option>
-                            </select>
-                            <input type="submit" value="Apply">
+                        <div class="book_status flex">
+                            <h4 class="book_description book_status status_title">Status:</h4>
+                            <div class="book_status_change flex">
+                                <select name="book_status_option" class="book_status_selector" id="book_status_option">
+                                    <option value="Reading">Reading</option>
+                                    <option value="To_Read">Plan to Read</option>
+                                    <option value="Read">Read</option>
+                                </select>
+                                <input type="submit" value="Update" class="button update_button">
+                            </div>
                         </div>
-                        <input type="submit" class="remove_book_button" value="Remove">
                     </div>
                 </article>
             </section>
@@ -123,22 +136,26 @@
                 </header>
                 <article class="book_card flex">
                     <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                    <div class="book_details">
-                        <div class="book_info">
-                            <h3 class="book_title">Book Title 30</h3>
-                            <h4 class="book_description book_author">Author: Author's Name</h4>
-                            <h4 class="book_description book_pages">Pages</h4>
+                    <div class="book_details flex">
+                        <div class="book_first_section flex">
+                            <div class="book_info">
+                                <h3 class="book_title">Book Title 30</h3>
+                                <h4 class="book_description book_author">Author: Author's Name</h4>
+                                <h4 class="book_description book_pages">Pages</h4>
+                            </div>
+                            <input type="submit" class="button remove_book_button" value="Remove">
                         </div>
-                        <div class="book_status">
-                            <h4 class="book_description book_status">Status:</h4>
-                            <select name="book_status_option" class="book_status_option" id="book_status_option">
-                                <option value="Reading">Reading</option>
-                                <option value="To_Read">Plan to Read</option>
-                                <option value="Read">Read</option>
-                            </select>
-                            <input type="submit" value="Apply">
+                        <div class="book_status flex">
+                            <h4 class="book_description book_status status_title">Status:</h4>
+                            <div class="book_status_change flex">
+                                <select name="book_status_option" class="book_status_selector" id="book_status_option">
+                                    <option value="Reading">Reading</option>
+                                    <option value="To_Read">Plan to Read</option>
+                                    <option value="Read">Read</option>
+                                </select>
+                                <input type="submit" value="Update" class="button update_button">
+                            </div>
                         </div>
-                        <input type="submit" class="remove_book_button" value="Remove">
                     </div>
                 </article>
             </section>
