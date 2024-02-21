@@ -52,10 +52,10 @@ body {
 
 .hidden_bar {
     background-color: #212020;
-    position: fixed;
+    position: absolute;
     min-height: 2.8em;
     z-index: -1;
-    width: 100vw;
+    width: 100%;
 }
 
 .navbar {
@@ -295,8 +295,11 @@ body {
 @media (max-width: 500px) {
 
     .container {
-        background-color: red;
-        padding: 0 1em 1em;
+        padding: 1em 1em 1em;
+    }
+
+    .hidden_bar {
+        min-height: 4em;
     }
 
     .first_navbar {
