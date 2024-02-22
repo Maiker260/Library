@@ -48,6 +48,23 @@ body {
 }
 
 
+.dialog_book_creation {
+    background: green;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 1em;
+  }
+
+dialog::backdrop {
+    background-color: hsla(251, 67%, 45%, 0.25);
+}
+
+.dialog_form_book_creation {
+    flex-direction: column;
+    font-size: 2rem;
+}
+
 /* Header/Navbar */
 
 .hidden_bar {

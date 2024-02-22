@@ -8,6 +8,32 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <dialog class="dialog_book_creation" id="#add_book_dialog">
+        <h2>Add Book</h2>
+        <form method="dialog" class="dialog_form_book_creation flex">
+            <label for="book_title_input" class="form_book_info">
+                Title:  
+                <input type="text" placeholder="Book's Title" id="book_title_input">
+            </label>
+            <label for="book_author_input" class="form_book_info">
+                Author:  
+                <input type="text" placeholder="Book's Author" id="book_author_input" required>
+            </label>
+            <label for="book_pages_input" class="form_book_info">
+                Pages:  
+                <input type="number" value="10" min="0" max="20000" id="book_pages_input">
+            </label>
+            <label for="book_status_input" class="form_book_info">
+                Status:  
+                <select name="book_status_input" id="book_status_input" class="book_status_input" required>
+                    <option value="reading">Reading</option>
+                    <option value="plan_to_read">Plan to Read</option>
+                    <option value="read">Read</option>
+                </select>
+            </label>
+            <button class="button save_book_button" id="save_new_book_button">Add Book</button>
+        </form>
+    </dialog>
     <nav class="hidden_bar"></nav>
     <div class="container">
         <header class="header_navbar">
@@ -42,35 +68,8 @@
             </nav>
         </header>
         <main class="main_content">
-            <div>
-                <dialog class="dialog_book_creation">
-                    <form class="dialog_form_book_creation">
-                        <label for="book_title_input" class="form_book_info">
-                            Book Title:  
-                            <input type="text" placeholder="Book's Title" id="book_title_input">
-                        </label>
-                        <label for="book_author_input" class="form_book_info">
-                            Book Author's Name:  
-                            <input type="text" placeholder="Book's Author" id="book_author_input" required>
-                        </label>
-                        <label for="book_pages_input" class="form_book_info">
-                            Pages:  
-                            <input type="number" value="10" min="0" max="20000" id="book_pages_input">
-                        </label>
-                        <label for="book_status_input" class="form_book_info">
-                            Status:  
-                            <select name="book_status_input" id="book_status_input" class="book_status_input" required>
-                                <option value="reading">Reading</option>
-                                <option value="plan_to_read">Plan to Read</option>
-                                <option value="read">Read</option>
-                            </select>
-                        </label>
-                        <button class="button save_book_button">Save</button>
-                    </form>
-                </dialog>
-            </div>
             <div class="add_button_container flex">
-                <button class="button add_book_button">ADD BOOK</button>
+                <button class="button add_book_button" id="add_book_button">ADD BOOK</button>
             </div>
             <section class="section reading_section">
                 <header class="section_header">
