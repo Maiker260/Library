@@ -17,7 +17,9 @@ addBookBtn.addEventListener("click", () => {
     addBookDialog.showModal();
 })
 
+// Function to allow the user to close the Modal when clicking outside it.
 addBookDialog.addEventListener("click", (e) => {
+
     const dialogDimensions = addBookDialog.getBoundingClientRect()
     if (
       e.clientX < dialogDimensions.left ||
@@ -30,15 +32,12 @@ addBookDialog.addEventListener("click", (e) => {
 })
 
 saveBookButton.addEventListener("click", (e) => {
-    addBookToLibrary();
-    addBookDialog.close();
     e.preventDefault();
-
-// DO NOT ADD ALL OF THE BOOKS AT THE SAME TIME ---FIX IT!
-    myLibrary.forEach((book) => createCardBook(book));
-
+    addBookDialog.close();
+    createCardBook(addBookToLibrary());
+    myLibrary.push(addBookToLibrary());
+    clearCurrentInfo()
 })
-
 
 //   Library Section
 
@@ -52,13 +51,14 @@ function Book(title, author, pages, status) {
 }
 
 function addBookToLibrary() {
+
     const newBook = new Book(
         `${bookTitle.value}`, 
         `${bookAuthor.value}`, 
         `${bookPages.value}`, 
         `${bookStatus.value}`);
-    myLibrary.push(newBook)
-    // clearCurrentInfo()
+
+    return newBook
 }
 
 function clearCurrentInfo() {
@@ -67,6 +67,7 @@ function clearCurrentInfo() {
     bookPages.value = "10";
 }
 
+// Function to create the Book Card and add it to the DOM
 function createCardBook(book) {
 
     const createCard = document.createElement("article");
@@ -97,25 +98,20 @@ function createCardBook(book) {
     `;
 
     checkCardStatus(createCard);
-
-    console.log("1213123")
-    console.log(bookStatus.value)
-
-
 }
 
+// Function to assign the Book Card to the correct Section
 function checkCardStatus(card) {
 
     if (bookStatus.value === "reading") {
         readingSection.appendChild(card)
-        console.log("1")
-    } else if (bookStatus.value === "plan to Read") {
+    } else if (bookStatus.value === "plan_to_read") {
         planToReadSection.appendChild(card)
-        console.log("2")
     } else if (bookStatus.value === "read") {
         readSection.appendChild(card)
     } else {
-        console.log("NOOOOOPE")
+        console.log("checkCardStatus_ERROR")
     }
+
 }
 
