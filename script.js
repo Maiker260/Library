@@ -81,7 +81,7 @@ function createCardBook(book) {
                     <h4 class="book_description book_author">Author: ${book.author}</h4>
                     <h4 class="book_description book_pages">${book.pages} Pages</h4>
                 </div>
-                <input type="submit" class="button remove_book_button" value="Remove">
+                <button class="button remove_book_button" >Remove</button>
             </div>
             <div class="book_status flex">
                 <h4 class="book_description book_status status_title">Status:</h4>
@@ -91,13 +91,18 @@ function createCardBook(book) {
                         <option value="To_Read">Plan to Read</option>
                         <option value="Read">Read</option>
                     </select>
-                    <input type="submit" value="Update" class="button update_button">
+                    <button class="button update_button">Update</button>
                 </div>
             </div>
         </div>
     `;
 
+    // Add event listener to remove button
+    addRemoveButtonListener(createCard);
+
     checkCardStatus(createCard);
+
+    return createCard;
 }
 
 // Function to assign the Book Card to the correct Section
@@ -115,3 +120,37 @@ function checkCardStatus(card) {
 
 }
 
+
+// Function to add event listener to remove button
+function addRemoveButtonListener(card) {
+    const removeButton = card.querySelector(".remove_book_button");
+    removeButton.addEventListener("click", () => {
+        removeBookCard(card);
+    });
+}
+
+// Function to remove the book card
+function removeBookCard(card) {
+    // Find the index of the card in the DOM
+    const index = Array.from(card.parentNode.children).indexOf(card);
+    
+    // Remove the card from the DOM
+    card.remove();
+
+    // Remove the corresponding book object from the myLibrary array
+    myLibrary.splice(index, 1);
+}
+
+
+
+// Here's a breakdown of how it works:
+
+// card.parentNode: This property retrieves the parent node of the card element in the DOM.
+
+// children: The children property returns a live HTMLCollection of child elements of the specified parent element.
+
+// Array.from(...): This converts the HTMLCollection (which is array-like but not a true array) into an array. This conversion allows us to use array methods like indexOf.
+
+// indexOf(card): This method searches the array for the specified card element and returns its index within the array. If the element is not found, it returns -1.
+
+// Putting it all together, Array.from(card.parentNode.children).indexOf(card) finds the index of the card element within its parent's children array. This index indicates the position of the card in the DOM relative to its siblings. This index is then used to locate and remove the corresponding book object from the myLibrary array.
