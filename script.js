@@ -105,7 +105,7 @@ function createCardBook(book, index) {
 
 
     // changeCardStatusListener(createCard);
-    modifyStatusTest(createCard)
+    // modifyStatusTest(createCard)
     // console.log(createCard)
 
 
@@ -189,16 +189,16 @@ function removeBookCard(card) {
 
 
 
-function modifyStatusTest(card) {
+// function modifyStatusTest(card) {
 
-    const bookCurrentStatus = card.querySelector("#book_status_option");
+//     const bookCurrentStatus = card.querySelector("#book_status_option");
 
-    bookCurrentStatus.addEventListener("change", () => {
-        console.log(`Modify status of ${card}`);
+//     bookCurrentStatus.addEventListener("change", () => {
+//         console.log(`Modify status of ${card}`);
         
-        const index = card.getAttribute("data-index");
-        console.log(`Modify status of ${index}`);
+//         const index = card.getAttribute("data-index");
+//         console.log(`Modify status of ${index}`);
 
 
-    });
-}
+//     });
+// }
