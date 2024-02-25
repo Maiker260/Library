@@ -34,10 +34,12 @@ addBookDialog.addEventListener("click", (e) => {
 saveBookButton.addEventListener("click", (e) => {
     e.preventDefault();
     addBookDialog.close();
-    createCardBook(addBookToLibrary());
-    myLibrary.push(addBookToLibrary());
-    clearCurrentInfo()
+    const newBook = addBookToLibrary();
+    myLibrary.push(newBook);
+    createCardBook(newBook, myLibrary.length - 1);
+    clearCurrentInfo();
 })
+
 
 //   Library Section
 
@@ -68,11 +70,11 @@ function clearCurrentInfo() {
 }
 
 // Function to create the Book Card and add it to the DOM
-function createCardBook(book) {
-
+function createCardBook(book, index) {
     const createCard = document.createElement("article");
     createCard.classList.add("book_card", "flex");
-    createCard.innerHTML  = `
+    createCard.setAttribute("data-index", index); // Set the data-index attribute
+    createCard.innerHTML = `
         <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
         <div class="book_details flex">
             <div class="book_first_section flex">
@@ -99,6 +101,14 @@ function createCardBook(book) {
 
     // Add event listener to remove button
     addRemoveButtonListener(createCard);
+
+
+
+    // changeCardStatusListener(createCard);
+    modifyStatusTest(createCard)
+    // console.log(createCard)
+
+
 
     checkCardStatus(createCard);
 
@@ -132,25 +142,63 @@ function addRemoveButtonListener(card) {
 // Function to remove the book card
 function removeBookCard(card) {
     // Find the index of the card in the DOM
-    const index = Array.from(card.parentNode.children).indexOf(card);
-    
-    // Remove the card from the DOM
-    card.remove();
+    const index = card.getAttribute("data-index");
 
     // Remove the corresponding book object from the myLibrary array
     myLibrary.splice(index, 1);
+
+    // Remove the card from the DOM
+    card.remove();
 }
 
 
 
-// Here's a breakdown of how it works:
 
-// card.parentNode: This property retrieves the parent node of the card element in the DOM.
 
-// children: The children property returns a live HTMLCollection of child elements of the specified parent element.
 
-// Array.from(...): This converts the HTMLCollection (which is array-like but not a true array) into an array. This conversion allows us to use array methods like indexOf.
+// function changeCardStatusListener(card) {
+//     const updateButton = card.querySelector(".update_button");
 
-// indexOf(card): This method searches the array for the specified card element and returns its index within the array. If the element is not found, it returns -1.
+//     updateButton.addEventListener("click", () => {
+//         changeCardStatus(card);
+//     });
+// }
 
-// Putting it all together, Array.from(card.parentNode.children).indexOf(card) finds the index of the card element within its parent's children array. This index indicates the position of the card in the DOM relative to its siblings. This index is then used to locate and remove the corresponding book object from the myLibrary array.
+// function changeCardStatus(card) {
+
+//     const currentStatus = card.getAttribute("value");
+
+//     console.log(`HOLA ${currentStatus}`);
+
+//     switch (currentStatus) {
+//         case "Reading":
+//             console.log("Status changed to Reading");
+//             break;
+//         case "To_Read":
+//             console.log("Status changed to To Read");
+//             break;
+//         case "Read":
+//             console.log("Status changed to Read");
+//             break;
+//         case "ERROR":
+//             console.log("Status changed to NO_MATCHED");
+//             break;
+//     }
+
+// }
+
+
+
+function modifyStatusTest(card) {
+
+    const bookCurrentStatus = card.querySelector("#book_status_option");
+
+    bookCurrentStatus.addEventListener("change", () => {
+        console.log(`Modify status of ${card}`);
+        
+        const index = card.getAttribute("data-index");
+        console.log(`Modify status of ${index}`);
+
+
+    });
+}

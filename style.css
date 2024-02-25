@@ -98,7 +98,7 @@ dialog::backdrop {
 
 .second_navbar{
     background-color: #324b92;
-    padding: 0.5em 1em; 
+    padding: 0 1em; 
 }
 
 .navbar_choose_content_section {
@@ -108,7 +108,7 @@ dialog::backdrop {
 }
 
 .content_list {
-    padding: 0.7em 0;
+    padding: 0.7em 0.5em;
 }
 
 .content_list:hover {
