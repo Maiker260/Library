@@ -27,10 +27,11 @@ addBookDialog.addEventListener("click", (e) => {
       e.clientY < dialogDimensions.top ||
       e.clientY > dialogDimensions.bottom
     ) {
-      addBookDialog.close()
+      addBookDialog.close();
     }
 })
 
+// Functon to add a Event Listener to the new book save button
 saveBookButton.addEventListener("click", (e) => {
     e.preventDefault();
     addBookDialog.close();
@@ -60,13 +61,14 @@ function addBookToLibrary() {
         `${bookPages.value}`, 
         `${bookStatus.value}`);
 
-    return newBook
+    return newBook;
 }
 
 function clearCurrentInfo() {
     bookTitle.value = "";
     bookAuthor.value = "";
     bookPages.value = "10";
+    book_status_input.value = "reading";
 }
 
 // Function to create the Book Card and add it to the DOM
@@ -89,9 +91,9 @@ function createCardBook(book, index) {
                 <h4 class="book_description book_status status_title">Status:</h4>
                 <div class="book_status_change flex">
                     <select name="book_status_option" class="book_status_selector" id="book_status_option">
-                        <option value="Reading">Reading</option>
-                        <option value="To_Read">Plan to Read</option>
-                        <option value="Read">Read</option>
+                        <option value="reading">Reading</option>
+                        <option value="plan_to_read">Plan to Read</option>
+                        <option value="read">Read</option>
                     </select>
                     <button class="button update_button">Update</button>
                 </div>
@@ -99,37 +101,34 @@ function createCardBook(book, index) {
         </div>
     `;
 
-    // Add event listener to remove button
+
     addRemoveButtonListener(createCard);
-
-
-
-    // changeCardStatusListener(createCard);
-    // modifyStatusTest(createCard)
-    // console.log(createCard)
-
-
-
+    changeCardStatusListener(createCard, index);
     checkCardStatus(createCard);
-
     return createCard;
 }
 
 // Function to assign the Book Card to the correct Section
 function checkCardStatus(card) {
 
-    if (bookStatus.value === "reading") {
-        readingSection.appendChild(card)
-    } else if (bookStatus.value === "plan_to_read") {
-        planToReadSection.appendChild(card)
-    } else if (bookStatus.value === "read") {
-        readSection.appendChild(card)
-    } else {
-        console.log("checkCardStatus_ERROR")
+    const bookCurrentStatus = card.querySelector("#book_status_option");
+
+    switch (bookStatus.value) {
+        case "reading":
+            readingSection.appendChild(card);
+            bookCurrentStatus.value = "reading";
+            break;
+        case "plan_to_read":
+            planToReadSection.appendChild(card);
+            bookCurrentStatus.value = "plan_to_read";
+            break;
+        case "read":
+            readSection.appendChild(card);
+            bookCurrentStatus.value = "read";
+            break;
     }
 
 }
-
 
 // Function to add event listener to remove button
 function addRemoveButtonListener(card) {
@@ -141,64 +140,67 @@ function addRemoveButtonListener(card) {
 
 // Function to remove the book card
 function removeBookCard(card) {
+
     // Find the index of the card in the DOM
-    const index = card.getAttribute("data-index");
+    const index = parseInt(card.getAttribute("data-index"));
 
     // Remove the corresponding book object from the myLibrary array
     myLibrary.splice(index, 1);
+
+    const cardsToUpdate = document.querySelectorAll(".book_card");
+    cardsToUpdate.forEach((cardToUpdate) => {
+        const cardIndex = parseInt(cardToUpdate.getAttribute("data-index"));
+        if (cardIndex > index) {
+            cardToUpdate.setAttribute("data-index", cardIndex - 1);
+        }
+    });
 
     // Remove the card from the DOM
     card.remove();
 }
 
 
+// Function to add event listener to update button
+function changeCardStatusListener(card, index) {
+    const updateButton = card.querySelector(".update_button");
+
+    updateButton.addEventListener("click", () => {
+        modifyBookStatus(card, index);
+    });
+}
+
+// Function to modify the section where the Card will be assign when the book status is change
+function modifyBookStatus(card, index) {
+
+    const bookCurrentStatus = card.querySelector("#book_status_option").value;
+
+    // Retrieve the corresponding book object from the myLibrary array using the provided index
+    const book = myLibrary[index];
+    
+    // Modify the status property of the book object
+    book.status = bookCurrentStatus;
+  
+    // Reassign the updated book object back to the myLibrary array
+    myLibrary[index] = book;
+
+    switch (bookCurrentStatus) {
+        case "reading":
+            console.log("Status changed to Reading");
+            readingSection.appendChild(card);
+            break;
+        case "plan_to_read":
+            console.log("Status changed to To Read");
+            planToReadSection.appendChild(card);
+            break;
+        case "read":
+            console.log("Status changed to Read");
+            readSection.appendChild(card);
+            break;
+    }
+
+}
 
 
-
-
-// function changeCardStatusListener(card) {
-//     const updateButton = card.querySelector(".update_button");
-
-//     updateButton.addEventListener("click", () => {
-//         changeCardStatus(card);
-//     });
-// }
-
-// function changeCardStatus(card) {
-
-//     const currentStatus = card.getAttribute("value");
-
-//     console.log(`HOLA ${currentStatus}`);
-
-//     switch (currentStatus) {
-//         case "Reading":
-//             console.log("Status changed to Reading");
-//             break;
-//         case "To_Read":
-//             console.log("Status changed to To Read");
-//             break;
-//         case "Read":
-//             console.log("Status changed to Read");
-//             break;
-//         case "ERROR":
-//             console.log("Status changed to NO_MATCHED");
-//             break;
-//     }
-
-// }
-
-
-
-// function modifyStatusTest(card) {
-
-//     const bookCurrentStatus = card.querySelector("#book_status_option");
-
-//     bookCurrentStatus.addEventListener("change", () => {
-//         console.log(`Modify status of ${card}`);
-        
-//         const index = card.getAttribute("data-index");
-//         console.log(`Modify status of ${index}`);
-
-
-//     });
-// }
+// NEED TO FIX THE BUG WHEN DELETING AN OBJECT, 
+// THE FIRST 2 VALUES SHARE THE SAME INDEX CAUSING THE FIRST VALUE
+// TO NOT BE ABLE TO BE MODIFY IT
