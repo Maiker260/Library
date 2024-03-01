@@ -50,7 +50,7 @@ body {
 /* Dialog */
 
 .dialog_book_creation {
-    margin: 25% auto;
+    margin: 20% auto;
     border-radius: calc(5px * 3.74);
     box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     padding: 1.6rem;
