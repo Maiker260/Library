@@ -42,7 +42,7 @@ saveBookButton.addEventListener("click", (e) => {
     e.preventDefault();
 
     if (bookTitle.value === "" || bookAuthor.value === "") {
-        
+
     } else {
         addBookDialog.close();
         addBookToLibrary();
@@ -114,14 +114,10 @@ function createCardBook(book, index) {
             </div>
         `;
 
-    const bookCurrentStatus = createCard.querySelector(`#book_status_option${index}`);
-    console.log("testi " + book.status);
-
     checkCardStatus(createCard, index, book.status);
     addRemoveButtonListener(createCard);
     changeCardStatusListener(createCard, index);
 
-    console.log("New Book: " + book.title + ", # " + index);
 }
 
 // function to show all books in the myLibrary Array
@@ -193,7 +189,6 @@ function changeCardStatusListener(card, index) {
     const updateButton = card.querySelector(".update_button");
 
     updateButton.addEventListener("click", () => {
-        console.log(index)
         modifyBookStatus(card, index);
     });
 }
@@ -214,15 +209,12 @@ function modifyBookStatus(card, index) {
 
     switch (bookCurrentStatus) {
         case "reading":
-            console.log("Status changed to Reading");
             readingSection.appendChild(card);
             break;
         case "plan_to_read":
-            console.log("Status changed to Plan to Read");
             planToReadSection.appendChild(card);
             break;
         case "read":
-            console.log("Status changed to Read");
             readSection.appendChild(card);
             break;
     }
