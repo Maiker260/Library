@@ -9,29 +9,29 @@
 </head>
 <body>
     <dialog class="dialog_book_creation" id="#add_book_dialog">
-        <h2>Add Book</h2>
+        <h2 class=" add_book_title" >Add Book</h2>
         <form method="dialog" class="dialog_form_book_creation flex">
-            <label for="book_title_input" class="form_book_info">
-                Title:  
-                <input type="text" placeholder="Book's Title" id="book_title_input">
+            <label for="book_title_input" class="form_book_info grid">
+                Title:
+                <input type="text" placeholder="Book's Title" id="book_title_input" class="input_form" required>
             </label>
-            <label for="book_author_input" class="form_book_info">
-                Author:  
-                <input type="text" placeholder="Book's Author" id="book_author_input" required>
+            <label for="book_author_input" class="form_book_info grid">
+                Author:
+                <input type="text" placeholder="Book's Author" id="book_author_input" class="input_form" required>
             </label>
-            <label for="book_pages_input" class="form_book_info">
-                Pages:  
-                <input type="number" value="10" min="0" max="20000" id="book_pages_input">
+            <label for="book_pages_input" class="form_book_info grid">
+                Pages:
+                <input type="number" value="10" min="0" max="20000" id="book_pages_input" class="input_form" required>
             </label>
-            <label for="book_status_input" class="form_book_info">
-                Status:  
-                <select name="book_status_input" class="book_status_input" id="book_status_input" required>
+            <label for="book_status_input" class="form_book_info grid">
+                Status:
+                <select name="book_status_input" class="book_status_input input_form" id="book_status_input" required>
                     <option value="reading">Reading</option>
                     <option value="plan_to_read">Plan to Read</option>
                     <option value="read">Read</option>
                 </select>
             </label>
-            <button class="button save_book_button" id="save_new_book_button">Add Book</button>
+            <button class="button save_book_button add_book_button_global" id="save_new_book_button">Add Book</button>
         </form>
     </dialog>
     <nav class="hidden_bar"></nav>
@@ -69,94 +69,22 @@
         </header>
         <main class="main_content">
             <div class="add_button_container flex">
-                <button class="button add_book_button" id="add_book_button">ADD BOOK</button>
+                <button class="button add_book_button add_book_button_global" id="add_book_button">ADD BOOK</button>
             </div>
             <section class="section reading_section">
                 <header class="section_header">
                     <h2 class="section_title">Reading</h2>
                 </header>
-                <article class="book_card flex">
-                    <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                    <div class="book_details flex">
-                        <div class="book_first_section flex">
-                            <div class="book_info">
-                                <h3 class="book_title">Book Title 10</h3>
-                                <h4 class="book_description book_author">Author: Author's Name</h4>
-                                <h4 class="book_description book_pages">Pages</h4>
-                            </div>
-                            <button class="button remove_book_button">Remove</button>
-                        </div>
-                        <div class="book_status flex">
-                            <h4 class="book_description book_status status_title">Status:</h4>
-                            <div class="book_status_change flex">
-                                <select name="book_status_option" class="book_status_selector" id="book_status_option">
-                                    <option value="Reading" selected>Reading</option>
-                                    <option value="To_Read">Plan to Read</option>
-                                    <option value="Read">Read</option>
-                                </select>
-                                <button class="button update_button">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
             </section>
             <section class="section plan_to_read_section">
                 <header class="section_header">
                     <h2 class="section_title">Plan to Read</h2>
                 </header>
-                <article class="book_card flex">
-                    <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                    <div class="book_details flex">
-                        <div class="book_first_section flex">
-                            <div class="book_info">
-                                <h3 class="book_title">Book Title 20</h3>
-                                <h4 class="book_description book_author">Author: Author's Name</h4>
-                                <h4 class="book_description book_pages">Pages</h4>
-                            </div>
-                            <button class="button remove_book_button">Remove</button>
-                        </div>
-                        <div class="book_status flex">
-                            <h4 class="book_description book_status status_title">Status:</h4>
-                            <div class="book_status_change flex">
-                                <select name="book_status_option" class="book_status_selector" id="book_status_option">
-                                    <option value="Reading">Reading</option>
-                                    <option value="To_Read" selected>Plan to Read</option>
-                                    <option value="Read">Read</option>
-                                </select>
-                                <button class="button update_button">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
             </section>
             <section class="section read_section">
                 <header class="section_header">
                     <h2 class="section_title">Read</h2>
                 </header>
-                <article class="book_card flex">
-                    <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-                    <div class="book_details flex">
-                        <div class="book_first_section flex">
-                            <div class="book_info">
-                                <h3 class="book_title">Book Title 30</h3>
-                                <h4 class="book_description book_author">Author: Author's Name</h4>
-                                <h4 class="book_description book_pages">Pages</h4>
-                            </div>
-                            <button class="button remove_book_button">Remove</button>
-                        </div>
-                        <div class="book_status flex">
-                            <h4 class="book_description book_status status_title">Status:</h4>
-                            <div class="book_status_change flex">
-                                <select name="book_status_option" class="book_status_selector" id="book_status_option">
-                                    <option value="Reading">Reading</option>
-                                    <option value="To_Read">Plan to Read</option>
-                                    <option value="Read" selected>Read</option>
-                                </select>
-                                <button class="button update_button">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
             </section>
         </main>
     </div>

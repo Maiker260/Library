@@ -47,14 +47,39 @@ body {
     cursor: pointer;
 }
 
+/* Dialog */
 
 .dialog_book_creation {
-    background: green;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    padding: 1em;
+    margin: 25% auto;
+    border-radius: calc(5px * 3.74);
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 1.6rem;
+    max-width: 400px;
+    background-color: #212020;
+    color: white;
   }
+
+.form_book_info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin-bottom: 0.6em;
+}
+
+.input_form {
+    padding: 0.5em;
+    width: 100%;
+    background-color: var(--details_color);
+    color: white;
+    border: none;
+}
+
+.add_book_title {
+    text-align: center;
+    margin-bottom: 1.3em;
+}
 
 dialog::backdrop {
     background-color: hsla(251, 67%, 45%, 0.25);
@@ -63,6 +88,10 @@ dialog::backdrop {
 .dialog_form_book_creation {
     flex-direction: column;
     font-size: 2rem;
+}
+
+.save_book_button {
+    margin-top: 1.3em;
 }
 
 /* Header/Navbar */
@@ -158,7 +187,7 @@ dialog::backdrop {
 
 }
 
-.add_book_button {
+.add_book_button_global {
     padding: 0.7em;
     border-radius: 0.5em;
     background-color: #3f5eb8;
