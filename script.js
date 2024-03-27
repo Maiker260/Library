@@ -57,11 +57,15 @@ saveBookButton.addEventListener("click", (e) => {
 
 const myLibrary = [];
 
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
+class Book {
+
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+
 }
 
 function addBookToLibrary() {
@@ -85,39 +89,98 @@ function clearCurrentInfo() {
 
 // Function to create the Book Card and add it to the DOM
 function createCardBook(book, index) {
+    const createCard = document.createElement("article");
+    createCard.classList.add("book_card", "flex");
+    createCard.setAttribute("data-index", index);
         
-        const createCard = document.createElement("article");
-        createCard.classList.add("book_card", "flex");
-        createCard.setAttribute("data-index", index); // Set the data-index attribute
-        createCard.innerHTML = `
-            <img class="book_image" src="./Assets/Books/Book Cover Not Available.png" alt="Book Picture">
-            <div class="book_details flex">
-                <div class="book_first_section flex">
-                    <div class="book_info">
-                        <h3 class="book_title">${book.title}</h3>
-                        <h4 class="book_description book_author">Author: ${book.author}</h4>
-                        <h4 class="book_description book_pages">${book.pages} Pages</h4>
-                    </div>
-                    <button class="button remove_book_button" >Remove</button>
-                </div>
-                <div class="book_status flex">
-                    <h4 class="book_description book_status status_title">Status:</h4>
-                    <div class="book_status_change flex">
-                        <select name="book_status_option" class="book_status_selector" id="book_status_option${index}">
-                            <option value="reading">Reading</option>
-                            <option value="plan_to_read">Plan to Read</option>
-                            <option value="read">Read</option>
-                        </select>
-                        <button class="button update_button">Update</button>
-                    </div>
-                </div>
-            </div>
-        `;
+    // Create and append the img element
+    const bookImage = document.createElement("img");
+    bookImage.classList.add("book_image");
+    bookImage.src = "./Assets/Books/Book Cover Not Available.png";
+    bookImage.alt = "Book Picture";
+    createCard.appendChild(bookImage);
+    
+    // Create and append the div with class "book_details"
+    const bookDetails = document.createElement("div");
+    bookDetails.classList.add("book_details", "flex");
+    createCard.appendChild(bookDetails);
+    
+    // Create and append the div with class "book_first_section"
+    const bookFirstSection = document.createElement("div");
+    bookFirstSection.classList.add("book_first_section", "flex");
+    bookDetails.appendChild(bookFirstSection);
+    
+    // Create and append the div with class "book_info"
+    const bookInfo = document.createElement("div");
+    bookInfo.classList.add("book_info");
+    bookFirstSection.appendChild(bookInfo);
+    
+    // Create and append the h3 element for book title
+    const bookTitle = document.createElement("h3");
+    bookTitle.classList.add("book_title");
+    bookTitle.textContent = book.title;
+    bookInfo.appendChild(bookTitle);
+    
+    // Create and append the h4 element for book author
+    const bookAuthor = document.createElement("h4");
+    bookAuthor.classList.add("book_description", "book_author");
+    bookAuthor.textContent = `Author: ${book.author}`;
+    bookInfo.appendChild(bookAuthor);
+    
+    // Create and append the h4 element for book pages
+    const bookPages = document.createElement("h4");
+    bookPages.classList.add("book_description", "book_pages");
+    bookPages.textContent = `${book.pages} Pages`;
+    bookInfo.appendChild(bookPages);
+    
+    // Create and append the button element for removing book
+    const removeButton = document.createElement("button");
+    removeButton.classList.add("button", "remove_book_button");
+    removeButton.textContent = "Remove";
+    bookFirstSection.appendChild(removeButton);
+    
+    // Create and append the div with class "book_status"
+    const bookStatus = document.createElement("div");
+    bookStatus.classList.add("book_status", "flex");
+    bookDetails.appendChild(bookStatus);
+    
+    // Create and append the h4 element for status title
+    const statusTitle = document.createElement("h4");
+    statusTitle.classList.add("book_description", "book_status", "status_title");
+    statusTitle.textContent = "Status:";
+    bookStatus.appendChild(statusTitle);
+    
+    // Create and append the div with class "book_status_change"
+    const statusChange = document.createElement("div");
+    statusChange.classList.add("book_status_change", "flex");
+    bookStatus.appendChild(statusChange);
+    
+    // Create and append the select element for book status
+    const statusSelector = document.createElement("select");
+    statusSelector.classList.add("book_status_selector");
+    statusSelector.name = "book_status_option";
+    statusSelector.id = `book_status_option${index}`;
+    statusChange.appendChild(statusSelector);
+    
+    // Add options to the select element
+    const statuses = ["reading", "plan_to_read", "read"];
+    statuses.forEach(status => {
+        const option = document.createElement("option");
+        option.value = status;
+        option.textContent = status.charAt(0).toUpperCase() + status.slice(1).replace('_', ' ');
+        statusSelector.appendChild(option);
+    });
+    
+    // Create and append the button element for updating status
+    const updateButton = document.createElement("button");
+    updateButton.classList.add("button", "update_button");
+    updateButton.textContent = "Update";
+    statusChange.appendChild(updateButton);
 
+    // Pass the book status to the checkCardStatus function
     checkCardStatus(createCard, index, book.status);
     addRemoveButtonListener(createCard);
     changeCardStatusListener(createCard, index);
-
 }
 
 // function to show all books in the myLibrary Array
