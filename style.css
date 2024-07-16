@@ -57,6 +57,7 @@ body {
     min-width: 20em;
     background-color: #212020;
     color: white;
+    transform: translateY(-40%);
   }
 
 .form_book_info {
@@ -313,6 +314,10 @@ dialog::backdrop {
     .navbar_choose_content_section {
         align-items: center;
     }
+
+    .dialog_book_creation {
+        transform: translateY(40%);
+    }
 }
 
 
@@ -334,6 +339,10 @@ dialog::backdrop {
 
     .navbar_search_bar {
         width: 20em;
+    }
+
+    .dialog_book_creation {
+        transform: translateY(35%);
     }
 
 }
@@ -385,4 +394,10 @@ dialog::backdrop {
         height: 30%;
     }
 
+}
+
+@media (max-width: 380px) {
+    .dialog_book_creation {
+        transform: translateY(10%);
+    }
 }
