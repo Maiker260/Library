@@ -169,7 +169,7 @@ function createCardBook(book, index) {
     statuses.forEach(status => {
         const option = document.createElement("option");
         option.value = status;
-        option.textContent = status.charAt(0).toUpperCase() + status.slice(1).replace('_', ' ');
+        option.textContent = status.charAt(0).toUpperCase() + status.slice(1).replaceAll('_', ' ');
         statusSelector.appendChild(option);
     });
     
