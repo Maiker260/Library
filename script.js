@@ -41,8 +41,10 @@ addBookDialog.addEventListener("click", (e) => {
 saveBookButton.addEventListener("click", (e) => {
     e.preventDefault();
 
-    if (bookTitle.value === "" || bookAuthor.value === "") {
-
+    if ( bookTitle.value === "" || bookAuthor.value === "") {
+        alert("Blank values are not accepted");
+    } else if (bookTitle.validity.tooShort || bookAuthor.validity.tooShort) {
+        alert("Title and Author's Name needs to be longer than 3 characters.");
     } else {
         addBookDialog.close();
         addBookToLibrary();
@@ -167,7 +169,7 @@ function createCardBook(book, index) {
     statuses.forEach(status => {
         const option = document.createElement("option");
         option.value = status;
-        option.textContent = status.charAt(0).toUpperCase() + status.slice(1).replace('_', ' ');
+        option.textContent = status.charAt(0).toUpperCase() + status.slice(1).replaceAll('_', ' ');
         statusSelector.appendChild(option);
     });
     
